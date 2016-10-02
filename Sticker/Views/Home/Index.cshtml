@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Video Sticker</h1>
+    <p class="lead">Videos Sticker is a free website where you can post your videos.</p>
+</div>
+
+<br/>
+
+<label>@ViewBag.Id</label>
+<br/>
+@Html.ActionLink("List all available videos", "List", "Video")

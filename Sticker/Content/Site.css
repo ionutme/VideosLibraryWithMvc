@@ -1,0 +1,55 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/*content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+thead tr td {
+    color: lightgray;
+}
+
+.link-description {
+    padding-left: 50px;
+}
+
+/* The following section defines styles for validation purpose*/
+.field-validation-error
+{
+    color: red !important;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    background-color: #ffeeee !important;
+    border: 1px solid red !important;
+}
+
+.validation-summary-errors {
+    color: red;
+}
+
+.validation-summary-valid {
+    display: none;
+}

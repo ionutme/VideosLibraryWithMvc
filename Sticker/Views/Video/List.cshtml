@@ -1,0 +1,29 @@
+﻿@using Sticker.Models
+@model List<VideoViewModel>
+
+@{
+    ViewBag.Title = "Videos DataBase";
+}
+
+<div class="jumbotron">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<table>
+    <thead>
+        <tr><td>name</td><td class="link-description">description</td></tr>
+    </thead>
+    <tbody>
+        @foreach (VideoViewModel video in Model)
+        {
+            <tr>
+                <td>
+                    <a href="https://@video.Link">@video.Name</a>
+                </td>
+                <td class="link-description">
+                    @video.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@model Sticker.Models.VideoViewModel
+
+@{
+    ViewBag.Title = "Add Video";
+}
+
+<div class="jumbotron">
+    <h2>@ViewBag.Title</h2>
+</div>
+<div class="panel-body">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            <label>name of the video:</label>
+            @Html.TextBoxFor(video => video.Name, new {@class = "form-control"})
+        </div>
+        <div class="form-group">
+            <label>source link:</label>
+            @Html.TextBoxFor(video => video.Link, new {@class = "form-control"})
+        </div>
+        <div class="form-group">
+            <label>short description:</label>
+            @Html.TextAreaFor(video => video.Description, new {@class = "form-control"})
+        </div>
+        <div class="text-center">
+            <input type="submit" value="save" class="btn"/>
+        </div>
+    }
+</div>
