@@ -8,9 +8,9 @@ namespace Sticker.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id = null)
         {
-            ViewBag.Id = RouteData.Values["id"];
+            ViewBag.Id = id;
 
             return View();
         }

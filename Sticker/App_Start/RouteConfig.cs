@@ -9,10 +9,17 @@ namespace Sticker
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Video",
+            routes.MapRoute("Video",
                 "Video/{action}",
                 new {controller = "Video", action = "List"}
+            );
+            routes.MapRoute("VideosDefault",
+                "Videos",
+                new { controller = "Video", action = "List" }
+            );
+            routes.MapRoute("Videos",
+                "Videos/List",
+                new { controller = "Video", action = "List" }
             );
 
             routes.MapRoute(

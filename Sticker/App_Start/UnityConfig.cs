@@ -24,7 +24,7 @@ namespace Sticker
             container.RegisterType<VideoEntityFactory>();
 
             container.RegisterType<AutoMapper.IConfigurationProvider, AutoMapper.MapperConfiguration>();
-            container.RegisterInstance(new MappingsConfig().Create());
+            container.RegisterInstance(new MappingConfig().Create());
 
             container.RegisterInstance(new UnitOfWork(new StickerDb()));
 

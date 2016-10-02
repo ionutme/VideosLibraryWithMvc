@@ -57,11 +57,11 @@ namespace Sticker.Controllers
             }
         }
 
-        public ActionResult List(string filter = null)
+        public ActionResult List(string filterTerm = null)
         {
             IEnumerable<Video> existingVideosInDb = 
                 _unitOfWork.VideosRepository.GetAll()
-                .Where(v => filter.IsNullOrWhiteSpace() || v.Name.ToLower().Contains(filter.ToLower()))
+                .Where(v => filterTerm.IsNullOrWhiteSpace() || v.Name.ToLower().Contains(filterTerm.ToLower()))
                 .OrderByDescending(video => video.Comments?.Count);
 
             List<VideoViewModel> videos = _viewModelFactory.CreateFrom(existingVideosInDb);
