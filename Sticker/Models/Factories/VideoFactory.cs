@@ -7,12 +7,12 @@ namespace Sticker.Models.Factories
 {
     public static class VideoFactory
     {
-        static VideoFactory()
+        /*static VideoFactory()
         {
             Mapper.Initialize(
                 cfg => cfg.CreateMap<VideoViewModel, Video>()
                           .ForMember(v => v.Link, f => f.ResolveUsing<LinkResolver>()));
-        }
+        }*/
 
         public static Video ToEntityModel(this VideoViewModel video)
         {
@@ -21,21 +21,7 @@ namespace Sticker.Models.Factories
 
         public static List<Video> ToEntityModel(this IEnumerable<VideoViewModel> videos)
         {
-            return videos.Select(x => ToEntityModel((VideoViewModel) x)).ToList();
-        }
-    }
-
-    public class LinkResolver : IValueResolver<VideoViewModel, Video, string>
-    {
-        public string Resolve(VideoViewModel viewModel, Video entity, string member, ResolutionContext context)
-        {
-            return FormatLink(viewModel.Link);
-        }
-        private static string FormatLink(string link)
-        {
-            return link
-                    .Replace("https://", string.Empty)
-                    .Replace("http://", string.Empty);
+            return videos.Select(ToEntityModel).ToList();
         }
     }
 }

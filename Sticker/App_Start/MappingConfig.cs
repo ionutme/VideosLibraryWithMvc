@@ -5,6 +5,8 @@ using System.Web;
 using AutoMapper;
 using Sticker.DataAccess.Entities;
 using Sticker.Models;
+using Sticker.Models.Factories;
+using Sticker.Models.Factories.Resolvers;
 
 namespace Sticker
 {
@@ -12,17 +14,19 @@ namespace Sticker
     {
         public static void RegisterFactories()
         {
-            var config = new MapperConfiguration(cfg => cfg.AddProfiles(new[] {typeof(OrganizationProfile)}));
+            //var config = new MapperConfiguration(cfg => cfg.AddProfiles(new[] {typeof(VideoMappingProfile)}));
             //IMapper mapper = config.CreateMapper();
-        }
 
-    public class OrganizationProfile : Profile
+            Mapper.Initialize(cfg => cfg.AddProfiles(new[] {typeof(VideoMappingProfile)}));
+        }
+    }
+
+    public class VideoMappingProfile : Profile
     {
-        public OrganizationProfile()
+        public VideoMappingProfile()
         {
             CreateMap<Video, VideoViewModel>();
-            CreateMap<VideoViewModel, Video>();
-            // Use CreateMap... Etc.. here (Profile methods are the same as configuration methods)
+            CreateMap<VideoViewModel, Video>().ForMember(v => v.Link, f => f.ResolveUsing<LinkResolver>());
         }
     }
 }

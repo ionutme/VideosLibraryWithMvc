@@ -9,7 +9,7 @@ namespace Sticker.Models.Factories
     {
         public static VideoViewModel ToViewModel(this Video video)
         {
-            Mapper.Initialize(cfg => cfg.CreateMap<Video, VideoViewModel>());
+            //Mapper.Initialize(cfg => cfg.CreateMap<Video, VideoViewModel>());
 
             return Mapper.Map<Video, VideoViewModel>(video);
         }

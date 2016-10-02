@@ -45,7 +45,8 @@ namespace Sticker.Controllers
 
         public ActionResult List(string filter = null)
         {
-            IEnumerable<Video> existingVideosInDb = _unitOfWork.VideosRepository.GetAll()
+            IEnumerable<Video> existingVideosInDb = 
+                _unitOfWork.VideosRepository.GetAll()
                 .Where(v => filter.IsNullOrWhiteSpace() || v.Name.ToLower().Contains(filter.ToLower()))
                 .OrderByDescending(video => video.Comments?.Count);
 
