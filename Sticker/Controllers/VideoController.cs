@@ -11,17 +11,26 @@ namespace Sticker.Controllers
 {
     public class VideoController : Controller
     {
+        #region Private Fields
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly VideoViewModelFactory _viewModelFactory;
         private readonly VideoEntityFactory _entityFactory;
 
-        public VideoController(IUnitOfWork unitOfWork, VideoViewModelFactory viewModelFactory, VideoEntityFactory entityFactory)
+        #endregion
+        
+        #region Constructor
+
+        public VideoController(IUnitOfWork unitOfWork, VideoViewModelFactory viewModelFactory,
+            VideoEntityFactory entityFactory)
         {
             _unitOfWork = unitOfWork;
             _viewModelFactory = viewModelFactory;
             _entityFactory = entityFactory;
         }
 
+        #endregion
+        
         [HttpGet]
         public ActionResult Add()
         {
