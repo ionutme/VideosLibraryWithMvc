@@ -189,10 +189,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Models\Factories\Mapping\MappingsConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Models\Factories\Mapping\Profiles\VideoMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -201,8 +202,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Factories\Resolvers\LinkResolver.cs" />
-    <Compile Include="Models\Factories\VideoFactory.cs" />
+    <Compile Include="Models\Factories\Mapping\Resolvers\LinkResolver.cs" />
+    <Compile Include="Models\Factories\VideoEntityFactory.cs" />
     <Compile Include="Models\Factories\VideoViewModelFactory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

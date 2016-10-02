@@ -10,7 +10,6 @@ namespace Sticker
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            MappingConfig.RegisterFactories();
             UnityConfig.RegisterComponents();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

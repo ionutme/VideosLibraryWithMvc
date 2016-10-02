@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Ajax.Utilities;
@@ -13,10 +12,14 @@ namespace Sticker.Controllers
     public class VideoController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly VideoViewModelFactory _viewModelFactory;
+        private readonly VideoEntityFactory _entityFactory;
 
-        public VideoController(IUnitOfWork unitOfWork)
+        public VideoController(IUnitOfWork unitOfWork, VideoViewModelFactory viewModelFactory, VideoEntityFactory entityFactory)
         {
             _unitOfWork = unitOfWork;
+            _viewModelFactory = viewModelFactory;
+            _entityFactory = entityFactory;
         }
 
         [HttpGet]
@@ -30,7 +33,9 @@ namespace Sticker.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.VideosRepository.Add(viewModel.ToEntityModel());
+                Video entity = _entityFactory.CreateFrom(viewModel);
+
+                _unitOfWork.VideosRepository.Add(entity);
 
                 _unitOfWork.Complete();
 
@@ -50,7 +55,7 @@ namespace Sticker.Controllers
                 .Where(v => filter.IsNullOrWhiteSpace() || v.Name.ToLower().Contains(filter.ToLower()))
                 .OrderByDescending(video => video.Comments?.Count);
 
-            List<VideoViewModel> videos = existingVideosInDb.ToViewModel();
+            List<VideoViewModel> videos = _viewModelFactory.CreateFrom(existingVideosInDb);
 
             return View("List", videos);
         }

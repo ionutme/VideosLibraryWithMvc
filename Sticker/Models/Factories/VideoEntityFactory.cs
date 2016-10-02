@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Sticker.DataAccess.Entities;
 using AutoMapper;
+using Sticker.DataAccess.Entities;
 
 namespace Sticker.Models.Factories
 {
-    public class VideoViewModelFactory
+    public class VideoEntityFactory
     {
         private readonly IMapper _videoMapper;
 
-        public VideoViewModelFactory(IConfigurationProvider mapperConfig)
+        public VideoEntityFactory(IConfigurationProvider mapperConfig)
         {
             _videoMapper = mapperConfig.CreateMapper();
         }
 
-        public VideoViewModel CreateFrom(Video video)
+        public Video CreateFrom(VideoViewModel video)
         {
-            return _videoMapper.Map<Video, VideoViewModel>(video);
+            return _videoMapper.Map<VideoViewModel, Video>(video);
         }
 
-        public List<VideoViewModel> CreateFrom(IEnumerable<Video> videos)
+        public List<Video> CreateFrom(IEnumerable<VideoViewModel> videos)
         {
             return videos.Select(CreateFrom).ToList();
         }
